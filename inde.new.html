@@ -1,0 +1,4056 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>TripCircle - India Group Travel</title>
+
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700&family=Playfair+Display:wght@600;700&display=swap');
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        html {
+            scroll-behavior: smooth;
+        }
+
+        body {
+            font-family: "DM Sans", sans-serif;
+            background: #f6f7f9;
+            color: #18202b;
+        }
+
+        button,
+        input,
+        select,
+        textarea {
+            font: inherit;
+        }
+
+        button {
+            cursor: pointer;
+        }
+
+        a {
+            text-decoration: none;
+            color: inherit;
+        }
+
+        .container {
+            width: min(1200px, 92%);
+            margin: auto;
+        }
+
+        /* NAVBAR */
+
+        .navbar {
+            position: sticky;
+            top: 0;
+            z-index: 1000;
+            background: rgba(255, 255, 255, .95);
+            backdrop-filter: blur(14px);
+            border-bottom: 1px solid #e8e9ec;
+        }
+
+        .nav-inner {
+            height: 72px;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+        }
+
+        .logo {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            font-size: 21px;
+            font-weight: 700;
+        }
+
+        .logo-icon {
+            width: 38px;
+            height: 38px;
+            border-radius: 11px;
+            background: #e96d3d;
+            color: #fff;
+            display: grid;
+            place-items: center;
+        }
+
+        .logo-text span {
+            color: #e96d3d;
+        }
+
+        .nav-links {
+            display: flex;
+            gap: 30px;
+        }
+
+        .nav-links a {
+            font-size: 14px;
+            color: #626a77;
+            font-weight: 600;
+        }
+
+        .nav-links a:hover {
+            color: #e96d3d;
+        }
+
+        .nav-actions {
+            display: flex;
+            align-items: center;
+            gap: 14px;
+        }
+
+        .btn {
+            border: none;
+            border-radius: 10px;
+            padding: 11px 18px;
+            font-weight: 700;
+            transition: .2s;
+        }
+
+        .btn:hover {
+            transform: translateY(-2px);
+        }
+
+        .btn-primary {
+            background: #e96d3d;
+            color: #fff;
+        }
+
+        .btn-light {
+            background: #fff;
+            border: 1px solid #dedfe4;
+            color: #353c47;
+        }
+
+        .menu-btn {
+            display: none;
+            border: none;
+            background: none;
+            font-size: 26px;
+        }
+
+        /* HERO */
+
+        .hero {
+            background:
+                linear-gradient(100deg, rgba(12, 22, 36, .96), rgba(12, 22, 36, .73), rgba(12, 22, 36, .35)),
+                url("https://images.unsplash.com/photo-1524492412937-b28074a5d7da?auto=format&fit=crop&w=2000&q=85") center/cover;
+            color: #fff;
+            min-height: 610px;
+            display: flex;
+            align-items: center;
+        }
+
+        .hero-grid {
+            display: grid;
+            grid-template-columns: 1.15fr .85fr;
+            gap: 70px;
+            align-items: center;
+        }
+
+        .hero-content {
+            max-width: 680px;
+        }
+
+        .tag {
+            color: #ee8b5d;
+            font-size: 11px;
+            font-weight: 700;
+            letter-spacing: 1.7px;
+            text-transform: uppercase;
+        }
+
+        .hero-badge {
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+            padding: 8px 13px;
+            background: rgba(255, 255, 255, .1);
+            border: 1px solid rgba(255, 255, 255, .18);
+            border-radius: 30px;
+            margin-bottom: 20px;
+            font-size: 12px;
+        }
+
+        .hero h1 {
+            font-family: "Playfair Display", serif;
+            font-size: clamp(48px, 6vw, 74px);
+            line-height: 1.02;
+            margin-bottom: 22px;
+        }
+
+        .hero h1 span {
+            color: #efa16f;
+        }
+
+        .hero-description {
+            max-width: 590px;
+            color: rgba(255, 255, 255, .76);
+            font-size: 17px;
+            margin-bottom: 28px;
+        }
+
+        .hero-buttons {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 12px;
+        }
+
+        .btn-hero {
+            padding: 14px 22px;
+        }
+
+        .btn-outline {
+            border: 1px solid rgba(255, 255, 255, .3);
+            color: #fff;
+            background: rgba(255, 255, 255, .07);
+        }
+
+        .hero-bottom {
+            display: flex;
+            align-items: center;
+            gap: 15px;
+            margin-top: 38px;
+        }
+
+        .avatar-group {
+            display: flex;
+        }
+
+        .avatar {
+            width: 35px;
+            height: 35px;
+            border-radius: 50%;
+            display: grid;
+            place-items: center;
+            background: #f0ece5;
+            border: 2px solid #1b2939;
+            margin-left: -7px;
+        }
+
+        .avatar:first-child {
+            margin-left: 0;
+        }
+
+        .hero-bottom strong {
+            display: block;
+            font-size: 13px;
+        }
+
+        .hero-bottom small {
+            color: rgba(255, 255, 255, .55);
+            font-size: 11px;
+        }
+
+        /* HERO PREVIEW */
+
+        .trip-preview {
+            background: rgba(255, 255, 255, .96);
+            color: #18202b;
+            border-radius: 22px;
+            padding: 23px;
+            box-shadow: 0 25px 70px rgba(0, 0, 0, .28);
+        }
+
+        .preview-head {
+            display: flex;
+            justify-content: space-between;
+            align-items: flex-start;
+        }
+
+        .preview-head small {
+            color: #969ca6;
+            font-size: 9px;
+            font-weight: 700;
+            letter-spacing: 1px;
+        }
+
+        .preview-head h3 {
+            margin-top: 4px;
+            font-size: 21px;
+        }
+
+        .status {
+            color: #36834b;
+            background: #edf7ef;
+            padding: 6px 9px;
+            border-radius: 20px;
+            font-size: 10px;
+            font-weight: 700;
+        }
+
+        .preview-dates {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            padding: 18px 0;
+            margin-top: 18px;
+            border-top: 1px solid #eceef0;
+            border-bottom: 1px solid #eceef0;
+        }
+
+        .preview-dates span {
+            display: block;
+            color: #9da2ab;
+            font-size: 9px;
+            font-weight: 700;
+        }
+
+        .preview-dates strong {
+            display: block;
+            margin-top: 3px;
+        }
+
+        .preview-arrow {
+            color: #e96d3d;
+            font-size: 20px;
+        }
+
+        .location-card {
+            display: flex;
+            gap: 12px;
+            align-items: center;
+            background: #f7f6f3;
+            border-radius: 12px;
+            padding: 13px;
+            margin-top: 17px;
+        }
+
+        .location-icon {
+            width: 40px;
+            height: 40px;
+            display: grid;
+            place-items: center;
+            border-radius: 10px;
+            background: #fff0e8;
+        }
+
+        .location-card small {
+            display: block;
+            color: #989ea8;
+            font-size: 9px;
+            font-weight: 700;
+        }
+
+        .location-card strong {
+            display: block;
+            margin-top: 2px;
+            font-size: 13px;
+        }
+
+        .progress-row {
+            display: flex;
+            justify-content: space-between;
+            margin-top: 20px;
+            font-size: 12px;
+            color: #6d7480;
+        }
+
+        .progress-row strong {
+            color: #e96d3d;
+        }
+
+        .progress {
+            height: 6px;
+            background: #eceef0;
+            border-radius: 10px;
+            margin-top: 8px;
+            overflow: hidden;
+        }
+
+        .progress div {
+            width: 10%;
+            height: 100%;
+            background: #e96d3d;
+            transition: .3s;
+        }
+
+        .preview-footer {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-top: 20px;
+        }
+
+        .preview-members {
+            display: flex;
+        }
+
+        .preview-members span {
+            width: 29px;
+            height: 29px;
+            display: grid;
+            place-items: center;
+            border-radius: 50%;
+            background: #f3efe9;
+            border: 2px solid #fff;
+            margin-left: -6px;
+            font-size: 11px;
+        }
+
+        .preview-members span:first-child {
+            margin-left: 0;
+        }
+
+        .preview-link {
+            border: none;
+            background: none;
+            color: #e96d3d;
+            font-size: 12px;
+            font-weight: 700;
+        }
+
+        /* SEARCH */
+
+        .search-section {
+            margin-top: -35px;
+            position: relative;
+            z-index: 5;
+        }
+
+        .search-box {
+            background: #fff;
+            border: 1px solid #e9eaed;
+            box-shadow: 0 15px 40px rgba(20, 30, 40, .08);
+            border-radius: 18px;
+            padding: 16px;
+            display: grid;
+            grid-template-columns: 1fr auto auto;
+            gap: 12px;
+        }
+
+        .search-input {
+            position: relative;
+        }
+
+        .search-input input {
+            width: 100%;
+            padding: 14px 15px 14px 43px;
+            border: 1px solid #e0e2e6;
+            border-radius: 11px;
+            outline: none;
+        }
+
+        .search-input input:focus {
+            border-color: #e96d3d;
+        }
+
+        .search-icon {
+            position: absolute;
+            left: 15px;
+            top: 12px;
+        }
+
+        /* GENERAL SECTION */
+
+        .section {
+            padding: 90px 0;
+        }
+
+        .section-heading {
+            display: flex;
+            justify-content: space-between;
+            align-items: end;
+            margin-bottom: 30px;
+        }
+
+        .section-heading h2 {
+            font-family: "Playfair Display", serif;
+            font-size: 43px;
+            line-height: 1.1;
+            margin-top: 7px;
+        }
+
+        .section-sub {
+            color: #7c838d;
+            max-width: 600px;
+            margin-top: 10px;
+        }
+
+        /* DESTINATIONS */
+
+        .destination-grid {
+            display: grid;
+            grid-template-columns: repeat(4, 1fr);
+            gap: 16px;
+        }
+
+        .destination {
+            position: relative;
+            height: 260px;
+            border-radius: 16px;
+            overflow: hidden;
+            background-size: cover;
+            background-position: center;
+            cursor: pointer;
+            transition: .3s;
+        }
+
+        .destination:hover {
+            transform: translateY(-5px);
+        }
+
+        .destination:nth-child(1) {
+            background-image: url("https://images.unsplash.com/photo-1602216056096-3b40cc0c9944?auto=format&fit=crop&w=800&q=80");
+        }
+
+        .destination:nth-child(2) {
+            background-image: url("https://images.unsplash.com/photo-1512343879784-a960bf40e7f2?auto=format&fit=crop&w=800&q=80");
+        }
+
+        .destination:nth-child(3) {
+            background-image: url("https://images.unsplash.com/photo-1605649487212-47bdab064df7?auto=format&fit=crop&w=800&q=80");
+        }
+
+        .destination:nth-child(4) {
+            background-image: url("https://images.unsplash.com/photo-1477587458883-47145ed94245?auto=format&fit=crop&w=800&q=80");
+        }
+
+        .destination:nth-child(5) {
+            background-image: url("https://images.unsplash.com/photo-1582510003544-4d00b7f74220?auto=format&fit=crop&w=800&q=80");
+        }
+
+        .destination:nth-child(6) {
+            background-image: url("https://images.unsplash.com/photo-1600100397608-f010b5cfe4b0?auto=format&fit=crop&w=800&q=80");
+        }
+
+        .destination:nth-child(7) {
+            background-image: url("https://images.unsplash.com/photo-1548013146-72479768bada?auto=format&fit=crop&w=800&q=80");
+        }
+
+        .destination:nth-child(8) {
+            background-image: url("https://images.unsplash.com/photo-1532375810709-75b1da00537c?auto=format&fit=crop&w=800&q=80");
+        }
+
+        .destination:nth-child(9) {
+            background-image: url("https://commons.wikimedia.org/wiki/Special:FilePath/Yercaud%20Hills%20at%20Salem%20in%20Tamilnadu.jpg?width=1200");
+        }
+
+        .destination:nth-child(10) {
+            background-image: url("https://commons.wikimedia.org/wiki/Special:FilePath/Mettur%20Dam%202025.jpg?width=1200");
+        }
+
+        .destination:nth-child(11) {
+            background-image: url("https://commons.wikimedia.org/wiki/Special:FilePath/Hogenakkal%20Falls%2CTamil%20Nadu.jpg?width=1200");
+        }
+
+        .destination:nth-child(12) {
+            background-image: url("https://commons.wikimedia.org/wiki/Special:FilePath/Kolli%20hills%202.jpg?width=1200");
+        }
+
+        .destination::after {
+            content: "";
+            position: absolute;
+            inset: 0;
+            background: linear-gradient(transparent 25%, rgba(5, 10, 17, .88));
+        }
+
+        .destination-content {
+            position: absolute;
+            left: 18px;
+            bottom: 18px;
+            z-index: 2;
+            color: #fff;
+        }
+
+        .destination-content span {
+            font-size: 9px;
+            letter-spacing: 1.3px;
+            font-weight: 700;
+        }
+
+        .destination-content h3 {
+            font-size: 20px;
+            margin: 4px 0;
+        }
+
+        .destination-content p {
+            font-size: 11px;
+            color: rgba(255, 255, 255, .72);
+        }
+
+        /* DASHBOARD */
+
+        .dashboard {
+            background: #f7f7f8;
+        }
+
+        .dashboard-grid {
+            display: grid;
+            grid-template-columns: 1.7fr .8fr;
+            gap: 20px;
+        }
+
+        .panel {
+            background: #fff;
+            border: 1px solid #e8e9ed;
+            border-radius: 17px;
+            padding: 22px;
+        }
+
+        .panel-title {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 20px;
+        }
+
+        .panel-title h3 {
+            font-size: 17px;
+        }
+
+        .trip-list {
+            display: flex;
+            flex-direction: column;
+            gap: 12px;
+        }
+
+        .trip-item {
+            display: flex;
+            align-items: center;
+            gap: 14px;
+            padding: 14px;
+            border: 1px solid #eceef0;
+            border-radius: 13px;
+            transition: .2s;
+        }
+
+        .trip-item:hover {
+            background: #fafafa;
+        }
+
+        .trip-image {
+            width: 75px;
+            height: 65px;
+            border-radius: 11px;
+            background-size: cover;
+            background-position: center;
+            flex-shrink: 0;
+        }
+
+        .trip-info {
+            flex: 1;
+        }
+
+        .trip-info h4 {
+            font-size: 14px;
+        }
+
+        .trip-info p {
+            color: #818792;
+            font-size: 11px;
+            margin-top: 2px;
+        }
+
+        .trip-progress {
+            width: 100px;
+        }
+
+        .trip-progress span {
+            display: block;
+            text-align: right;
+            font-size: 10px;
+            color: #e96d3d;
+            font-weight: 700;
+        }
+
+        .trip-progress-bar {
+            height: 5px;
+            background: #eceef0;
+            border-radius: 5px;
+            overflow: hidden;
+            margin-top: 5px;
+        }
+
+        .trip-progress-bar div {
+            height: 100%;
+            background: #e96d3d;
+            transition: .3s;
+        }
+
+        .small-btn {
+            border: none;
+            background: #fff1e9;
+            color: #d85f31;
+            padding: 8px 10px;
+            border-radius: 8px;
+            font-size: 10px;
+            font-weight: 700;
+        }
+
+        /* TODAY CARD */
+
+        .today-list {
+            display: flex;
+            flex-direction: column;
+            gap: 12px;
+        }
+
+        .today-item {
+            display: flex;
+            gap: 11px;
+            padding-bottom: 12px;
+            border-bottom: 1px solid #eeeef0;
+        }
+
+        .time {
+            width: 50px;
+            color: #9a9fa8;
+            font-size: 10px;
+            font-weight: 700;
+        }
+
+        .today-item strong {
+            font-size: 12px;
+        }
+
+        .today-item p {
+            font-size: 10px;
+            color: #888e97;
+        }
+
+        /* FEATURES */
+
+        .feature-grid {
+            display: grid;
+            grid-template-columns: repeat(4, 1fr);
+            gap: 16px;
+        }
+
+        .feature-card {
+            background: #fff;
+            border: 1px solid #e8e9ed;
+            border-radius: 16px;
+            padding: 24px;
+            transition: .25s;
+        }
+
+        .feature-card:hover {
+            transform: translateY(-4px);
+            box-shadow: 0 18px 35px rgba(0, 0, 0, .06);
+        }
+
+        .feature-icon {
+            width: 48px;
+            height: 48px;
+            display: grid;
+            place-items: center;
+            background: #fff0e8;
+            border-radius: 12px;
+            font-size: 21px;
+            margin-bottom: 17px;
+        }
+
+        .feature-card h3 {
+            font-size: 16px;
+            margin-bottom: 8px;
+        }
+
+        .feature-card p {
+            color: #7c838d;
+            font-size: 12px;
+        }
+
+        /* FOOTER */
+
+        .footer {
+            background: #101927;
+            color: #fff;
+            padding-top: 60px;
+        }
+
+        .footer-grid {
+            display: grid;
+            grid-template-columns: 2fr 1fr 1fr;
+            gap: 50px;
+            padding-bottom: 50px;
+        }
+
+        .footer p {
+            color: rgba(255, 255, 255, .5);
+            font-size: 12px;
+            margin-top: 14px;
+            max-width: 330px;
+        }
+
+        .footer h4 {
+            font-size: 13px;
+            margin-bottom: 13px;
+        }
+
+        .footer a {
+            display: block;
+            color: rgba(255, 255, 255, .52);
+            font-size: 12px;
+            margin: 8px 0;
+        }
+
+        .footer a:hover {
+            color: #fff;
+        }
+
+        .copyright {
+            border-top: 1px solid rgba(255, 255, 255, .08);
+            text-align: center;
+            padding: 17px;
+            color: rgba(255, 255, 255, .4);
+            font-size: 11px;
+        }
+
+        /* MODAL */
+
+        .modal {
+            position: fixed;
+            inset: 0;
+            z-index: 3000;
+            display: none;
+            align-items: center;
+            justify-content: center;
+            background: rgba(8, 14, 23, .68);
+            backdrop-filter: blur(8px);
+            padding: 20px;
+        }
+
+        .modal.active {
+            display: flex;
+        }
+
+        .modal-box {
+            width: min(530px, 100%);
+            background: #fff;
+            padding: 30px;
+            border-radius: 20px;
+            position: relative;
+            max-height: 90vh;
+            overflow: auto;
+        }
+
+        .close {
+            position: absolute;
+            right: 18px;
+            top: 15px;
+            border: none;
+            background: none;
+            font-size: 27px;
+            color: #777e89;
+        }
+
+        .modal-box h2 {
+            font-family: "Playfair Display", serif;
+            font-size: 32px;
+            margin: 7px 0;
+        }
+
+        .modal-text {
+            font-size: 12px;
+            color: #808691;
+            margin-bottom: 22px;
+        }
+
+        .form-group {
+            margin-bottom: 15px;
+        }
+
+        .form-group label {
+            display: block;
+            font-size: 11px;
+            font-weight: 700;
+            margin-bottom: 7px;
+        }
+
+        .form-group input,
+        .form-group textarea,
+        .form-group select {
+            width: 100%;
+            padding: 12px;
+            border: 1px solid #dfe1e5;
+            border-radius: 9px;
+            outline: none;
+        }
+
+        .form-group input:focus,
+        .form-group textarea:focus,
+        .form-group select:focus {
+            border-color: #e96d3d;
+        }
+
+        .form-row {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 12px;
+        }
+
+        .modal-submit {
+            width: 100%;
+            margin-top: 8px;
+        }
+
+        /* TRIP DETAIL */
+
+        .trip-tabs {
+            display: flex;
+            gap: 5px;
+            overflow: auto;
+            padding-bottom: 8px;
+            border-bottom: 1px solid #eceef0;
+            margin-bottom: 20px;
+        }
+
+        .trip-tab {
+            border: none;
+            background: #f4f5f6;
+            color: #737a84;
+            padding: 9px 13px;
+            border-radius: 8px;
+            font-size: 11px;
+            font-weight: 700;
+            white-space: nowrap;
+        }
+
+        .trip-tab.active {
+            background: #e96d3d;
+            color: #fff;
+        }
+
+        .tab-content {
+            display: none;
+        }
+
+        .tab-content.active {
+            display: block;
+        }
+
+        .itinerary-item {
+            display: flex;
+            align-items: flex-start;
+            gap: 13px;
+            padding: 14px;
+            border: 1px solid #eceef0;
+            border-radius: 12px;
+            margin-bottom: 10px;
+        }
+
+        .itinerary-time {
+            min-width: 50px;
+            color: #e96d3d;
+            font-size: 11px;
+            font-weight: 700;
+        }
+
+        .itinerary-item h4 {
+            font-size: 13px;
+        }
+
+        .itinerary-item p {
+            color: #808691;
+            font-size: 10px;
+        }
+
+        .add-item {
+            margin-top: 10px;
+        }
+
+        .check-item {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            padding: 11px 0;
+            border-bottom: 1px solid #efeff1;
+        }
+
+        .check-item input {
+            accent-color: #e96d3d;
+        }
+
+        .check-item span {
+            font-size: 12px;
+        }
+
+        .checked {
+            text-decoration: line-through;
+            color: #949aa3;
+        }
+
+        .action-row {
+            display: flex;
+            gap: 10px;
+            margin-top: 18px;
+            flex-wrap: wrap;
+        }
+
+        .delete-btn {
+            background: #fff;
+            color: #d94343;
+            border: 1px solid #f0caca;
+        }
+
+        /* CHECK IN */
+
+        .checkin-box {
+            margin-top: 15px;
+            padding: 15px;
+            border: 1px solid #eceef0;
+            border-radius: 12px;
+        }
+
+        .checkin-title {
+            font-size: 13px;
+            font-weight: 700;
+            margin-bottom: 10px;
+        }
+
+        .checkin-buttons {
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            gap: 8px;
+        }
+
+        .check-btn {
+            border: 1px solid #e4e5e8;
+            background: #fafafa;
+            color: #59616c;
+            padding: 10px;
+            border-radius: 9px;
+            font-size: 10px;
+            font-weight: 700;
+        }
+
+        .check-btn.done {
+            background: #edf7ef;
+            border-color: #b9dfc0;
+            color: #36834b;
+        }
+
+        /* TOAST */
+
+        .toast {
+            position: fixed;
+            bottom: 22px;
+            right: 22px;
+            z-index: 5000;
+            background: #172130;
+            color: #fff;
+            padding: 12px 17px;
+            border-radius: 10px;
+            font-size: 12px;
+            transform: translateY(20px);
+            opacity: 0;
+            pointer-events: none;
+            transition: .3s;
+        }
+
+        .toast.show {
+            opacity: 1;
+            transform: translateY(0);
+        }
+
+        /* RESPONSIVE */
+
+        @media(max-width:1000px) {
+
+            .hero-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .hero {
+                padding: 80px 0;
+            }
+
+            .destination-grid {
+                grid-template-columns: repeat(2, 1fr);
+            }
+
+            .feature-grid {
+                grid-template-columns: repeat(2, 1fr);
+            }
+
+            .dashboard-grid {
+                grid-template-columns: 1fr;
+            }
+        }
+
+        @media(max-width:700px) {
+
+            .nav-links,
+            .nav-actions {
+                display: none;
+            }
+
+            .menu-btn {
+                display: block;
+            }
+
+            .hero h1 {
+                font-size: 47px;
+            }
+
+            .search-box {
+                grid-template-columns: 1fr;
+            }
+
+            .section {
+                padding: 70px 0;
+            }
+
+            .section-heading {
+                align-items: flex-start;
+                gap: 15px;
+                flex-direction: column;
+            }
+
+            .section-heading h2 {
+                font-size: 35px;
+            }
+
+            .destination-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .feature-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .footer-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .form-row {
+                grid-template-columns: 1fr;
+            }
+
+            .trip-progress {
+                display: none;
+            }
+
+            .checkin-buttons {
+                grid-template-columns: 1fr;
+            }
+        }
+    </style>
+</head>
+
+<body>
+
+    <!-- NAVBAR -->
+
+    <header class="navbar">
+        <div class="container nav-inner">
+
+            <a href="#" class="logo">
+                <div class="logo-icon">✈</div>
+                <div class="logo-text">Trip<span>Circle</span></div>
+            </a>
+
+            <nav class="nav-links">
+                <a href="#explore">Explore</a>
+                <a href="#myTrips">My Trips</a>
+                <a href="#features">Features</a>
+            </nav>
+
+            <div class="nav-actions">
+                <button class="btn btn-light" onclick="openLoginModal()">
+                    Login
+                </button>
+
+                <button class="btn btn-primary" onclick="openCreateTrip()">
+                    + Create Trip
+                </button>
+            </div>
+
+            <button class="menu-btn" onclick="showToast('Mobile menu opened')">
+                ☰
+            </button>
+
+        </div>
+    </header>
+
+
+    <!-- HERO -->
+
+    <section class="hero">
+
+        <div class="container hero-grid">
+
+            <div class="hero-content">
+
+                <div class="hero-badge">
+                    🇮🇳 Group travel, made simple
+                </div>
+
+                <h1>
+                    Travel together.
+                    <br>
+                    <span>Plan better.</span>
+                </h1>
+
+                <p class="hero-description">
+                    Plan your next Indian adventure with your friends and family.
+                    Create trips, build itineraries, organize transport and stays,
+                    and keep every memory together.
+                </p>
+
+                <div class="hero-buttons">
+
+                    <button class="btn btn-primary btn-hero" onclick="openCreateTrip()">
+                        Start Planning →
+                    </button>
+
+                    <button class="btn btn-outline btn-hero"
+                        onclick="document.getElementById('explore').scrollIntoView()">
+                        Explore Destinations
+                    </button>
+
+                </div>
+
+                <div class="hero-bottom">
+
+                    <div class="avatar-group">
+                        <div class="avatar">👨🏻</div>
+                        <div class="avatar">👩🏻</div>
+                        <div class="avatar">👨🏽</div>
+                        <div class="avatar">👩🏽</div>
+                    </div>
+
+                    <div>
+                        <strong>Built for groups</strong>
+                        <small>Friends • Family • College trips</small>
+                    </div>
+
+                </div>
+
+            </div>
+
+
+            <!-- LIVE PREVIEW -->
+
+            <div class="trip-preview">
+
+                <div class="preview-head">
+
+                    <div>
+                        <small>UPCOMING TRIP</small>
+                        <h3 id="previewTripName">Create your first trip</h3>
+                    </div>
+
+                    <span class="status" id="previewStatus">Planning</span>
+
+                </div>
+
+
+                <div class="preview-dates">
+
+                    <div>
+                        <span>START</span>
+                        <strong id="previewStart">--</strong>
+                    </div>
+
+                    <div class="preview-arrow">→</div>
+
+                    <div>
+                        <span>END</span>
+                        <strong id="previewEnd">--</strong>
+                    </div>
+
+                </div>
+
+
+                <div class="location-card">
+
+                    <div class="location-icon">📍</div>
+
+                    <div>
+                        <small>ROUTE</small>
+                        <strong id="previewDestination">
+                            Starting location → Destination
+                        </strong>
+                    </div>
+
+                </div>
+
+
+                <div class="progress-row">
+
+                    <span>Planning progress</span>
+                    <strong id="previewProgress">0%</strong>
+
+                </div>
+
+                <div class="progress">
+                    <div id="progressBar" style="width:0%"></div>
+                </div>
+
+
+                <div class="preview-footer">
+
+                    <div class="preview-members" id="previewMembers">
+                        <span>👥</span>
+                    </div>
+
+                    <button class="preview-link" onclick="openTripDetails()">
+                        View Trip →
+                    </button>
+
+                </div>
+
+            </div>
+
+        </div>
+    </section>
+
+
+    <!-- SEARCH -->
+
+    <section class="search-section">
+
+        <div class="container">
+
+            <div class="search-box">
+
+                <div class="search-input">
+
+                    <span class="search-icon">🔍</span>
+
+                    <input type="text" id="destinationSearch" placeholder="Search Indian destinations..."
+                        oninput="searchDestinations()">
+
+                </div>
+
+                <button class="btn btn-light" onclick="useCurrentSearch()">
+                    Search
+                </button>
+
+                <button class="btn btn-primary" onclick="openCreateTrip()">
+                    Create Trip
+                </button>
+
+            </div>
+
+        </div>
+
+    </section>
+
+
+    <!-- DESTINATIONS -->
+
+    <section class="section" id="explore">
+
+        <div class="container">
+
+            <div class="section-heading">
+
+                <div>
+
+                    <div class="tag">EXPLORE INDIA</div>
+
+                    <h2>Choose your next escape.</h2>
+
+                    <p class="section-sub">
+                        Find a destination, then turn it into a group trip.
+                    </p>
+
+                </div>
+
+                <button class="btn btn-light" onclick="showAllDestinations()">
+                    View All
+                </button>
+
+            </div>
+
+
+            <div class="destination-grid" id="destinationGrid">
+
+                <article class="destination" data-name="kerala" onclick="selectDestination('Kerala')">
+                    <div class="destination-content">
+                        <span>KERALA</span>
+                        <h3>God's Own Country</h3>
+                        <p>Backwaters • Mountains • Beaches</p>
+                    </div>
+                </article>
+
+
+                <article class="destination" data-name="goa" onclick="selectDestination('Goa')">
+                    <div class="destination-content">
+                        <span>GOA</span>
+                        <h3>Beach Life</h3>
+                        <p>Beaches • Forts • Sunsets</p>
+                    </div>
+                </article>
+
+
+                <article class="destination" data-name="himachal himachal pradesh"
+                    onclick="selectDestination('Himachal Pradesh')">
+                    <div class="destination-content">
+                        <span>HIMACHAL</span>
+                        <h3>Into the Mountains</h3>
+                        <p>Snow • Valleys • Adventure</p>
+                    </div>
+                </article>
+
+
+                <article class="destination" data-name="rajasthan" onclick="selectDestination('Rajasthan')">
+                    <div class="destination-content">
+                        <span>RAJASTHAN</span>
+                        <h3>Royal India</h3>
+                        <p>Forts • Palaces • Desert</p>
+                    </div>
+                </article>
+
+
+                <article class="destination" data-name="tamil nadu" onclick="selectDestination('Tamil Nadu')">
+                    <div class="destination-content">
+                        <span>TAMIL NADU</span>
+                        <h3>Discover the South</h3>
+                        <p>Temples • Beaches • Hills</p>
+                    </div>
+                </article>
+
+
+                <article class="destination" data-name="karnataka" onclick="selectDestination('Karnataka')">
+                    <div class="destination-content">
+                        <span>KARNATAKA</span>
+                        <h3>Stories & Landscapes</h3>
+                        <p>Hampi • Coorg • Coast</p>
+                    </div>
+                </article>
+
+
+                <article class="destination" data-name="uttarakhand" onclick="selectDestination('Uttarakhand')">
+                    <div class="destination-content">
+                        <span>UTTARAKHAND</span>
+                        <h3>Mountain Calm</h3>
+                        <p>Hills • Rivers • Temples</p>
+                    </div>
+                </article>
+
+
+                <article class="destination" data-name="sikkim" onclick="selectDestination('Sikkim')">
+                    <div class="destination-content">
+                        <span>SIKKIM</span>
+                        <h3>Eastern Himalayas</h3>
+                        <p>Mountains • Lakes • Culture</p>
+                    </div>
+                </article>
+
+
+                <article class="destination" data-name="yercaud salem tamil nadu"
+                    onclick="selectDestination('Yercaud')">
+                    <div class="destination-content">
+                        <span>SALEM • TAMIL NADU</span>
+                        <h3>Yercaud</h3>
+                        <p>Hills • Yercaud Lake • Viewpoints</p>
+                    </div>
+                </article>
+
+
+                <article class="destination" data-name="mettur salem tamil nadu" onclick="selectDestination('Mettur')">
+                    <div class="destination-content">
+                        <span>SALEM • TAMIL NADU</span>
+                        <h3>Mettur</h3>
+                        <p>Dam • Cauvery • Scenic Views</p>
+                    </div>
+                </article>
+
+
+                <article class="destination" data-name="hogenakkal dharmapuri tamil nadu"
+                    onclick="selectDestination('Hogenakkal')">
+                    <div class="destination-content">
+                        <span>DHARMAPURI • TAMIL NADU</span>
+                        <h3>Hogenakkal Falls</h3>
+                        <p>Waterfalls • Coracle Rides • Nature</p>
+                    </div>
+                </article>
+
+
+                <article class="destination" data-name="kolli hills namakkal tamil nadu"
+                    onclick="selectDestination('Kolli Hills')">
+                    <div class="destination-content">
+                        <span>NAMAKKAL • TAMIL NADU</span>
+                        <h3>Kolli Hills</h3>
+                        <p>Mountains • Hairpin Bends • Forest</p>
+                    </div>
+                </article>
+
+            </div>
+
+        </div>
+    </section>
+
+
+    <!-- MY TRIPS -->
+
+    <section class="section dashboard" id="myTrips">
+
+        <div class="container">
+
+            <div class="section-heading">
+
+                <div>
+                    <div class="tag">YOUR SPACE</div>
+                    <h2>My Trips</h2>
+                    <p class="section-sub">
+                        Keep your upcoming adventures organized.
+                    </p>
+                </div>
+
+                <button class="btn btn-primary" onclick="openCreateTrip()">
+                    + New Trip
+                </button>
+
+            </div>
+
+
+            <div class="dashboard-grid">
+
+                <div class="panel">
+
+                    <div class="panel-title">
+
+                        <h3>Upcoming trips</h3>
+
+                        <button class="small-btn" onclick="showToast('All saved trips are displayed')">
+                            View all
+                        </button>
+
+                    </div>
+
+
+                    <div class="trip-list" id="tripList">
+
+                        <!-- Dynamic trips appear here -->
+
+                    </div>
+
+                </div>
+
+
+                <div class="panel">
+
+                    <div class="panel-title">
+                        <h3>Today's plan</h3>
+                        <span class="tag" id="todayDestination">TRIP</span>
+                    </div>
+
+
+                    <div class="today-list" id="todayList">
+
+                        <div class="today-item">
+                            <div class="time">--:--</div>
+                            <div>
+                                <strong>No trip selected</strong>
+                                <p>Create a trip to see your plan.</p>
+                            </div>
+                        </div>
+
+                    </div>
+
+                </div>
+
+            </div>
+
+        </div>
+    </section>
+
+
+    <!-- FEATURES -->
+
+    <section class="section" id="features">
+
+        <div class="container">
+
+            <div class="section-heading">
+
+                <div>
+
+                    <div class="tag">TRIPCIRCLE TOOLS</div>
+
+                    <h2>Everything in one circle.</h2>
+
+                    <p class="section-sub">
+                        One platform for planning, coordinating and remembering your trip.
+                    </p>
+
+                </div>
+
+            </div>
+
+
+            <div class="feature-grid">
+
+                <div class="feature-card">
+                    <div class="feature-icon">📅</div>
+                    <h3>Day-by-Day Itinerary</h3>
+                    <p>Create activities, timings and notes for every travel day.</p>
+                </div>
+
+                <div class="feature-card">
+                    <div class="feature-icon">🚆</div>
+                    <h3>Transport</h3>
+                    <p>Keep train, bus, flight and cab details together.</p>
+                </div>
+
+                <div class="feature-card">
+                    <div class="feature-icon">🏨</div>
+                    <h3>Hotels & Stays</h3>
+                    <p>Store check-in, check-out and booking details.</p>
+                </div>
+
+                <div class="feature-card">
+                    <div class="feature-icon">👥</div>
+                    <h3>Group Collaboration</h3>
+                    <p>Invite your friends and build the trip together.</p>
+                </div>
+
+                <div class="feature-card">
+                    <div class="feature-icon">💬</div>
+                    <h3>Trip Chat</h3>
+                    <p>Keep every planning conversation inside the trip.</p>
+                </div>
+
+                <div class="feature-card">
+                    <div class="feature-icon">🎒</div>
+                    <h3>Packing Checklist</h3>
+                    <p>Track what each member needs before travelling.</p>
+                </div>
+
+                <div class="feature-card">
+                    <div class="feature-icon">📸</div>
+                    <h3>Trip Memories</h3>
+                    <p>Save photos and memorable moments together.</p>
+                </div>
+
+                <div class="feature-card">
+                    <div class="feature-icon">🔔</div>
+                    <h3>Notifications</h3>
+                    <p>Stay updated about invitations and trip changes.</p>
+                </div>
+
+            </div>
+
+        </div>
+    </section>
+
+
+    <!-- FOOTER -->
+
+    <footer class="footer">
+
+        <div class="container footer-grid">
+
+            <div>
+
+                <a href="#" class="logo">
+                    <div class="logo-icon">✈</div>
+                    <div class="logo-text">Trip<span>Circle</span></div>
+                </a>
+
+                <p>
+                    A group trip planning platform built for exploring India together.
+                </p>
+
+            </div>
+
+
+            <div>
+
+                <h4>Explore</h4>
+
+                <a href="#explore">Destinations</a>
+                <a href="#myTrips">My Trips</a>
+                <a href="#features">Features</a>
+
+            </div>
+
+
+            <div>
+
+                <h4>TripCircle</h4>
+
+                <a href="#" onclick="showToast('Login module coming next');return false;">
+                    Login
+                </a>
+
+                <a href="#" onclick="openCreateTrip();return false;">
+                    Create Trip
+                </a>
+
+                <a href="#" onclick="showToast('Contact module coming next');return false;">
+                    Contact
+                </a>
+
+            </div>
+
+        </div>
+
+        <div class="copyright">
+            © 2026 TripCircle • India Group Trip Planning Platform
+        </div>
+
+    </footer>
+
+
+    <!-- CREATE TRIP MODAL -->
+
+    <div class="modal" id="createModal">
+
+        <div class="modal-box">
+
+            <button class="close" onclick="closeCreateTrip()">×</button>
+
+            <div class="tag">CREATE YOUR TRIP</div>
+
+            <h2>Start a new adventure.</h2>
+
+            <p class="modal-text">
+                Add the basic details and your trip will appear in My Trips.
+            </p>
+
+
+            <form id="createTripForm">
+
+                <div class="form-group">
+
+                    <label>Trip Name</label>
+
+                    <input type="text" id="tripName" placeholder="Example: Yercaud Friends Trip" required>
+
+                </div>
+
+
+                <!-- NEW STARTING LOCATION -->
+
+                <div class="form-group">
+
+                    <label>Starting Location</label>
+
+                    <input type="text" id="tripStartLocation" placeholder="Example: Chennai / Coimbatore / Salem"
+                        required>
+
+                </div>
+
+
+                <div class="form-group">
+
+                    <label>Destination</label>
+
+                    <input type="text" id="tripDestination" placeholder="Example: Yercaud" required>
+
+                </div>
+
+
+                <div class="form-row">
+
+                    <div class="form-group">
+
+                        <label>Start Date</label>
+
+                        <input type="date" id="tripStart" required>
+
+                    </div>
+
+
+                    <div class="form-group">
+
+                        <label>End Date</label>
+
+                        <input type="date" id="tripEnd" required>
+
+                    </div>
+
+                </div>
+
+
+                <div class="form-group">
+
+                    <label>Number of Members</label>
+
+                    <select id="tripMembers">
+
+                        <option value="2">2 Members</option>
+                        <option value="3">3 Members</option>
+                        <option value="4">4 Members</option>
+                        <option value="5">5 Members</option>
+                        <option value="6">6 Members</option>
+                        <option value="7">7 Members</option>
+                        <option value="8">8 Members</option>
+                        <option value="10">10 Members</option>
+                        <option value="15">15 Members</option>
+
+                    </select>
+
+                </div>
+
+
+                <button class="btn btn-primary modal-submit" type="submit">
+                    Create Trip →
+                </button>
+
+            </form>
+
+        </div>
+    </div>
+
+
+    <!-- TRIP DETAILS MODAL -->
+
+    <div class="modal" id="tripModal">
+
+        <div class="modal-box">
+
+            <button class="close" onclick="closeTripDetails()">×</button>
+
+            <div class="tag">TRIP DASHBOARD</div>
+
+            <h2 id="detailTitle">Trip Details</h2>
+
+            <p class="modal-text" id="detailSubtitle">
+                Your selected trip details.
+            </p>
+
+
+            <div class="trip-tabs">
+
+                <button class="trip-tab active" onclick="switchTab(event,'overview')">
+                    Overview
+                </button>
+
+                <button class="trip-tab" onclick="switchTab(event,'itinerary')">
+                    Itinerary
+                </button>
+
+                <button class="trip-tab" onclick="switchTab(event,'transport')">
+                    Transport
+                </button>
+
+                <button class="trip-tab" onclick="switchTab(event,'hotel')">
+                    Hotels
+                </button>
+
+                <button class="trip-tab" onclick="switchTab(event,'members')">
+                    Members
+                </button>
+
+                <button class="trip-tab" onclick="switchTab(event,'packing')">
+                    Packing
+                </button>
+
+            </div>
+
+
+            <!-- OVERVIEW -->
+
+            <div class="tab-content active" id="overview">
+
+                <div class="panel" style="padding:16px">
+
+                    <h3 style="margin-bottom:10px">
+                        Trip Overview
+                    </h3>
+
+                    <p id="overviewText" style="font-size:12px;color:#7d838c">
+                        Your trip planning progress.
+                    </p>
+
+                    <div class="progress" style="margin-top:15px">
+                        <div id="detailProgressBar" style="width:10%"></div>
+                    </div>
+
+                    <div class="checkin-box">
+
+                        <div class="checkin-title">
+                            Planning Check-in
+                        </div>
+
+                        <div class="checkin-buttons">
+
+                            <button class="check-btn" data-task="transport" onclick="checkIn('transport',this)">
+                                🚆 Transport
+                            </button>
+
+                            <button class="check-btn" data-task="hotel" onclick="checkIn('hotel',this)">
+                                🏨 Hotel
+                            </button>
+
+                            <button class="check-btn" data-task="itinerary" onclick="checkIn('itinerary',this)">
+                                📅 Itinerary
+                            </button>
+
+                            <button class="check-btn" data-task="packing" onclick="checkIn('packing',this)">
+                                🎒 Packing
+                            </button>
+
+                            <button class="check-btn" data-task="members" onclick="checkIn('members',this)">
+                                👥 Members
+                            </button>
+
+                        </div>
+
+                    </div>
+
+                    <div class="action-row">
+
+                        <button class="btn btn-light" onclick="closeTripDetails();openCreateTrip();">
+                            Edit / Create Another
+                        </button>
+
+                        <button class="btn delete-btn" onclick="deleteTrip()">
+                            🗑 Delete Trip
+                        </button>
+
+                    </div>
+
+                </div>
+
+            </div>
+
+
+            <!-- ITINERARY -->
+
+            <div class="tab-content" id="itinerary">
+
+                <div id="itineraryList"></div>
+
+                <button class="btn btn-primary add-item" onclick="addActivity()">
+                    + Add Activity
+                </button>
+
+            </div>
+
+
+            <!-- TRANSPORT -->
+
+            <div class="tab-content" id="transport">
+
+                <div class="panel" style="padding:16px">
+
+                    <h3 id="transportTitle">🚆 Transport</h3>
+
+                    <p id="transportText" style="font-size:11px;color:#7c838d;margin-top:6px">
+                        Transport details.
+                    </p>
+
+                    <hr style="border:none;border-top:1px solid #eee;margin:15px 0">
+
+                    <h3>🚕 Local Transport</h3>
+
+                    <p id="localTransportText" style="font-size:11px;color:#7c838d;margin-top:6px">
+                        Local travel information.
+                    </p>
+
+                </div>
+
+            </div>
+
+
+            <!-- HOTEL -->
+
+            <div class="tab-content" id="hotel">
+
+                <div class="panel" style="padding:16px">
+
+                    <h3 id="hotelTitle">🏨 Hotel</h3>
+
+                    <p id="hotelText" style="font-size:11px;color:#7c838d;margin-top:7px">
+                        Hotel information.
+                    </p>
+
+                </div>
+
+            </div>
+
+
+            <!-- MEMBERS -->
+
+            <div class="tab-content" id="members">
+
+                <div id="membersList"></div>
+
+            </div>
+
+
+            <!-- PACKING -->
+
+            <div class="tab-content" id="packing">
+
+                <label class="check-item">
+                    <input type="checkbox" onchange="updatePacking()">
+                    <span>Clothes</span>
+                </label>
+
+                <label class="check-item">
+                    <input type="checkbox" onchange="updatePacking()">
+                    <span>Travel Documents</span>
+                </label>
+
+                <label class="check-item">
+                    <input type="checkbox" onchange="updatePacking()">
+                    <span>Charger & Power Bank</span>
+                </label>
+
+                <label class="check-item">
+                    <input type="checkbox" onchange="updatePacking()">
+                    <span>Sunglasses</span>
+                </label>
+
+                <label class="check-item">
+                    <input type="checkbox" onchange="updatePacking()">
+                    <span>Medicines</span>
+                </label>
+
+                <p id="packingStatus" style="font-size:11px;color:#e96d3d;font-weight:700;margin-top:15px">
+                    0 items packed
+                </p>
+
+            </div>
+
+        </div>
+    </div>
+
+
+    <!-- TOAST -->
+
+    <div class="toast" id="toast"></div>
+
+
+    <script>
+
+        /* =====================================================
+           TRIPCIRCLE DATA
+        ===================================================== */
+
+        const STORAGE_KEY = "tripCircleTrips";
+        const ACTIVE_KEY = "tripCircleActiveTrip";
+
+        const destinationData = {
+
+            "Kerala": {
+                transport: "Train / Bus / Flight",
+                hotel: "Kerala group-friendly hotel or homestay",
+                local: "Local cab / Auto / Bus",
+                places: [
+                    "Munnar",
+                    "Alleppey Backwaters",
+                    "Varkala Beach"
+                ]
+            },
+
+            "Goa": {
+                transport: "Train / Bus / Flight",
+                hotel: "Goa beach-area hotel or hostel",
+                local: "Rental bike / Cab",
+                places: [
+                    "Baga Beach",
+                    "Fort Aguada",
+                    "Calangute Beach"
+                ]
+            },
+
+            "Himachal Pradesh": {
+                transport: "Flight / Train + Bus",
+                hotel: "Mountain hotel or homestay",
+                local: "Local taxi / Bus",
+                places: [
+                    "Manali",
+                    "Shimla",
+                    "Solang Valley"
+                ]
+            },
+
+            "Rajasthan": {
+                transport: "Train / Flight / Bus",
+                hotel: "Heritage hotel or city hotel",
+                local: "Cab / Auto / Local Bus",
+                places: [
+                    "Jaipur",
+                    "Jodhpur",
+                    "Udaipur"
+                ]
+            },
+
+            "Tamil Nadu": {
+                transport: "Train / Bus",
+                hotel: "City hotel or homestay",
+                local: "Bus / Cab / Auto",
+                places: [
+                    "Chennai",
+                    "Madurai",
+                    "Ooty"
+                ]
+            },
+
+            "Karnataka": {
+                transport: "Train / Bus / Flight",
+                hotel: "City hotel or resort",
+                local: "Cab / Bus / Auto",
+                places: [
+                    "Bengaluru",
+                    "Mysuru",
+                    "Coorg"
+                ]
+            },
+
+            "Uttarakhand": {
+                transport: "Train / Flight + Bus",
+                hotel: "Mountain hotel or homestay",
+                local: "Local taxi / Bus",
+                places: [
+                    "Rishikesh",
+                    "Mussoorie",
+                    "Nainital"
+                ]
+            },
+
+            "Sikkim": {
+                transport: "Flight / Train + Taxi",
+                hotel: "Mountain hotel or homestay",
+                local: "Local taxi",
+                places: [
+                    "Gangtok",
+                    "Tsomgo Lake",
+                    "Pelling"
+                ]
+            },
+
+            "Yercaud": {
+                transport: "Bus / Car / Train + Local Bus",
+                hotel: "Hill-view resort or homestay",
+                local: "Local cab / Auto",
+                places: [
+                    "Yercaud Lake",
+                    "Pagoda Point",
+                    "Lady's Seat"
+                ]
+            },
+
+            "Mettur": {
+                transport: "Bus / Car / Train + Local Transport",
+                hotel: "Local hotel or homestay",
+                local: "Auto / Cab / Bus",
+                places: [
+                    "Mettur Dam",
+                    "Stanley Reservoir",
+                    "Mettur Viewpoints"
+                ]
+            },
+
+            "Hogenakkal": {
+                transport: "Bus / Car",
+                hotel: "Nearby hotel or homestay",
+                local: "Auto / Cab",
+                places: [
+                    "Hogenakkal Falls",
+                    "Boating Area",
+                    "Waterfall Viewpoints"
+                ]
+            },
+
+            "Kolli Hills": {
+                transport: "Bus / Car",
+                hotel: "Hill resort or homestay",
+                local: "Cab / Local Bus",
+                places: [
+                    "Agaya Gangai",
+                    "Seekuparai",
+                    "Boat House"
+                ]
+            }
+
+        };
+
+
+        /* =====================================================
+           TOAST
+        ===================================================== */
+
+        let toastTimer;
+
+        function showToast(message) {
+
+            const toast =
+                document.getElementById("toast");
+
+            toast.textContent = message;
+
+            toast.classList.add("show");
+
+            clearTimeout(toastTimer);
+
+            toastTimer = setTimeout(function () {
+
+                toast.classList.remove("show");
+
+            }, 3000);
+
+        }
+
+
+        /* =====================================================
+           STORAGE
+        ===================================================== */
+
+        function getTrips() {
+
+            try {
+
+                return JSON.parse(
+                    localStorage.getItem(STORAGE_KEY)
+                ) || [];
+
+            } catch (error) {
+
+                return [];
+
+            }
+
+        }
+
+
+        function saveTrips(trips) {
+
+            localStorage.setItem(
+                STORAGE_KEY,
+                JSON.stringify(trips)
+            );
+
+        }
+
+
+        function getActiveTrip() {
+
+            const id =
+                localStorage.getItem(ACTIVE_KEY);
+
+            return getTrips().find(
+                trip => trip.id === id
+            ) || null;
+
+        }
+
+
+        function saveTrip(trip) {
+
+            const trips = getTrips();
+
+            const index =
+                trips.findIndex(
+                    item => item.id === trip.id
+                );
+
+            if (index >= 0) {
+
+                trips[index] = trip;
+
+            } else {
+
+                trips.push(trip);
+
+            }
+
+            saveTrips(trips);
+
+            localStorage.setItem(
+                ACTIVE_KEY,
+                trip.id
+            );
+
+        }
+
+
+        /* =====================================================
+           CREATE MODAL
+        ===================================================== */
+
+        function openCreateTrip() {
+
+            document.getElementById("createModal")
+                .classList.add("active");
+
+        }
+
+
+        function closeCreateTrip() {
+
+            document.getElementById("createModal")
+                .classList.remove("active");
+
+        }
+
+
+        /* =====================================================
+           DESTINATION NORMALIZATION
+        ===================================================== */
+
+        function normalizeDestination(name) {
+
+            const input =
+                name.trim().toLowerCase();
+
+            const found =
+                Object.keys(destinationData)
+                    .find(
+                        destination =>
+                            destination.toLowerCase() === input
+                    );
+
+            return found || name.trim();
+
+        }
+
+
+        /* =====================================================
+           CREATE DEFAULT ITINERARY
+        ===================================================== */
+
+        function createDefaultItinerary(trip) {
+
+            const info =
+                destinationData[trip.destination];
+
+            const places =
+                info ?
+                    info.places :
+                    [
+                        trip.destination + " sightseeing",
+                        trip.destination + " main attraction",
+                        trip.destination + " local market"
+                    ];
+
+            const startDate =
+                new Date(trip.startDate);
+
+            const endDate =
+                new Date(trip.endDate);
+
+            let days =
+                Math.ceil(
+                    (endDate - startDate)
+                    / 86400000
+                ) + 1;
+
+            days =
+                Math.max(
+                    1,
+                    Math.min(days, 5)
+                );
+
+            const itinerary = [];
+
+            for (let i = 0; i < days; i++) {
+
+                itinerary.push({
+
+                    id: Date.now() + i,
+
+                    time:
+                        i === 0
+                            ? "09:00"
+                            : "10:00",
+
+                    title:
+                        i === 0
+                            ? `Travel from ${trip.startLocation} to ${trip.destination}`
+                            : places[i - 1] ||
+                            `Explore ${trip.destination}`,
+
+                    location:
+                        i === 0
+                            ? trip.destination
+                            : places[i - 1] ||
+                            trip.destination
+
+                });
+
+            }
+
+            return itinerary;
+
+        }
+
+
+        /* =====================================================
+           CREATE TRIP OBJECT
+        ===================================================== */
+
+        function createTripObject(
+            name,
+            startLocation,
+            destination,
+            startDate,
+            endDate,
+            members
+        ) {
+
+            const trip = {
+
+                id:
+                    "trip_" +
+                    Date.now(),
+
+                name: name,
+
+                startLocation: startLocation,
+
+                destination: destination,
+
+                startDate: startDate,
+
+                endDate: endDate,
+
+                members: Number(members),
+
+                progress: 10,
+
+                checks: {
+
+                    transport: false,
+
+                    hotel: false,
+
+                    itinerary: false,
+
+                    packing: false,
+
+                    members: false
+
+                },
+
+                packingItems: [],
+
+                itinerary: []
+
+            };
+
+            trip.itinerary =
+                createDefaultItinerary(trip);
+
+            return trip;
+
+        }
+
+
+        /* =====================================================
+           CREATE TRIP FORM
+        ===================================================== */
+
+        document
+            .getElementById("createTripForm")
+            .addEventListener(
+                "submit",
+                function (e) {
+
+                    e.preventDefault();
+
+
+                    const name =
+                        document
+                            .getElementById("tripName")
+                            .value
+                            .trim();
+
+
+                    const startLocation =
+                        document
+                            .getElementById("tripStartLocation")
+                            .value
+                            .trim();
+
+
+                    const destination =
+                        normalizeDestination(
+                            document
+                                .getElementById("tripDestination")
+                                .value
+                        );
+
+
+                    const startDate =
+                        document
+                            .getElementById("tripStart")
+                            .value;
+
+
+                    const endDate =
+                        document
+                            .getElementById("tripEnd")
+                            .value;
+
+
+                    const members =
+                        document
+                            .getElementById("tripMembers")
+                            .value;
+
+
+                    if (!name ||
+                        !startLocation ||
+                        !destination ||
+                        !startDate ||
+                        !endDate) {
+
+                        showToast(
+                            "Please fill all fields."
+                        );
+
+                        return;
+
+                    }
+
+
+                    if (
+                        new Date(endDate)
+                        <
+                        new Date(startDate)
+                    ) {
+
+                        showToast(
+                            "End date must be after start date."
+                        );
+
+                        return;
+
+                    }
+
+
+                    const trip =
+                        createTripObject(
+                            name,
+                            startLocation,
+                            destination,
+                            startDate,
+                            endDate,
+                            members
+                        );
+
+
+                    saveTrip(trip);
+
+                    renderEverything(trip);
+
+                    closeCreateTrip();
+
+                    this.reset();
+
+                    showToast(
+                        `${startLocation} → ${destination} trip created! 🎉`
+                    );
+
+
+                    setTimeout(function () {
+
+                        document
+                            .getElementById("myTrips")
+                            .scrollIntoView({
+                                behavior: "smooth"
+                            });
+
+                    }, 300);
+
+                }
+            );
+
+
+        /* =====================================================
+           RENDER EVERYTHING
+        ===================================================== */
+
+        function renderEverything(trip) {
+
+            renderPreview(trip);
+
+            renderTripList();
+
+            renderTodayPlan(trip);
+
+        }
+
+
+        /* =====================================================
+           PREVIEW
+        ===================================================== */
+
+        function renderPreview(trip) {
+
+            document
+                .getElementById("previewTripName")
+                .textContent =
+                trip.name;
+
+
+            document
+                .getElementById("previewStart")
+                .textContent =
+                formatDateShort(trip.startDate);
+
+
+            document
+                .getElementById("previewEnd")
+                .textContent =
+                formatDateShort(trip.endDate);
+
+
+            document
+                .getElementById("previewDestination")
+                .textContent =
+                `${trip.startLocation} → ${trip.destination}`;
+
+
+            document
+                .getElementById("previewProgress")
+                .textContent =
+                trip.progress + "%";
+
+
+            document
+                .getElementById("progressBar")
+                .style.width =
+                trip.progress + "%";
+
+
+            document
+                .getElementById("previewStatus")
+                .textContent =
+                trip.progress >= 100
+                    ? "Complete"
+                    : "Planning";
+
+
+            const members =
+                document
+                    .getElementById("previewMembers");
+
+
+            members.innerHTML = "";
+
+
+            const icons = [
+                "👨🏻",
+                "👩🏻",
+                "👨🏽",
+                "👩🏽"
+            ];
+
+
+            const displayCount =
+                Math.min(
+                    trip.members,
+                    4
+                );
+
+
+            for (
+                let i = 0;
+                i < displayCount;
+                i++
+            ) {
+
+                const span =
+                    document.createElement("span");
+
+                span.textContent =
+                    icons[i % icons.length];
+
+                members.appendChild(span);
+
+            }
+
+
+            if (trip.members > 4) {
+
+                const more =
+                    document.createElement("span");
+
+                more.textContent =
+                    "+" + (trip.members - 4);
+
+                members.appendChild(more);
+
+            }
+
+        }
+
+
+        /* =====================================================
+           TRIP LIST
+        ===================================================== */
+
+        function renderTripList() {
+
+            const list =
+                document.getElementById("tripList");
+
+            const trips =
+                getTrips();
+
+
+            if (trips.length === 0) {
+
+                list.innerHTML = `
+
+            <div style="
+                padding:25px;
+                text-align:center;
+                color:#888e97;
+                font-size:12px;
+            ">
+                No trips yet.<br>
+                Create your first TripCircle adventure.
+            </div>
+
+        `;
+
+                return;
+
+            }
+
+
+            list.innerHTML = "";
+
+
+            trips.forEach(function (trip) {
+
+                const item =
+                    document.createElement("div");
+
+                item.className =
+                    "trip-item";
+
+
+                item.innerHTML = `
+
+            <div class="trip-image"
+                 style="
+                 background-image:url('${getDestinationImage(trip.destination)}')
+                 ">
+            </div>
+
+            <div class="trip-info">
+
+                <h4>
+                    ${escapeHTML(trip.name)}
+                </h4>
+
+                <p>
+                    ${formatDateShort(trip.startDate)}
+                    -
+                    ${formatDateShort(trip.endDate)}
+                    •
+                    ${escapeHTML(trip.startLocation)}
+                    →
+                    ${escapeHTML(trip.destination)}
+                    •
+                    ${trip.members} members
+                </p>
+
+            </div>
+
+            <div class="trip-progress">
+
+                <span>
+                    ${trip.progress}%
+                </span>
+
+                <div class="trip-progress-bar">
+
+                    <div
+                        style="width:${trip.progress}%">
+                    </div>
+
+                </div>
+
+            </div>
+
+            <button
+                class="small-btn"
+                onclick="openSavedTrip('${trip.id}')">
+
+                Open
+
+            </button>
+
+        `;
+
+
+                list.appendChild(item);
+
+            });
+
+        }
+
+
+        /* =====================================================
+           DESTINATION IMAGE
+        ===================================================== */
+
+        function getDestinationImage(destination) {
+
+            const images = {
+
+                "Kerala":
+                    "https://images.unsplash.com/photo-1602216056096-3b40cc0c9944?auto=format&fit=crop&w=300&q=80",
+
+                "Goa":
+                    "https://images.unsplash.com/photo-1512343879784-a960bf40e7f2?auto=format&fit=crop&w=300&q=80",
+
+                "Himachal Pradesh":
+                    "https://images.unsplash.com/photo-1605649487212-47bdab064df7?auto=format&fit=crop&w=300&q=80",
+
+                "Rajasthan":
+                    "https://images.unsplash.com/photo-1477587458883-47145ed94245?auto=format&fit=crop&w=300&q=80",
+
+                "Tamil Nadu":
+                    "https://images.unsplash.com/photo-1582510003544-4d00b7f74220?auto=format&fit=crop&w=300&q=80",
+
+                "Karnataka":
+                    "https://images.unsplash.com/photo-1600100397608-f010b5cfe4b0?auto=format&fit=crop&w=300&q=80",
+
+                "Uttarakhand":
+                    "https://images.unsplash.com/photo-1548013146-72479768bada?auto=format&fit=crop&w=300&q=80",
+
+                "Sikkim":
+                    "https://images.unsplash.com/photo-1532375810709-75b1da00537c?auto=format&fit=crop&w=300&q=80",
+
+                "Yercaud":
+                    "https://commons.wikimedia.org/wiki/Special:FilePath/Yercaud%20Hills%20at%20Salem%20in%20Tamilnadu.jpg?width=600",
+
+                "Mettur":
+                    "https://commons.wikimedia.org/wiki/Special:FilePath/Mettur%20Dam%202025.jpg?width=600",
+
+                "Hogenakkal":
+                    "https://commons.wikimedia.org/wiki/Special:FilePath/Hogenakkal%20Falls%2CTamil%20Nadu.jpg?width=600",
+
+                "Kolli Hills":
+                    "https://commons.wikimedia.org/wiki/Special:FilePath/Kolli%20hills%202.jpg?width=600"
+
+            };
+
+
+            return images[destination] ||
+                images["Tamil Nadu"];
+
+        }
+
+
+        /* =====================================================
+           OPEN SAVED TRIP
+        ===================================================== */
+
+        function openSavedTrip(id) {
+
+            localStorage.setItem(
+                ACTIVE_KEY,
+                id
+            );
+
+
+            const trip =
+                getActiveTrip();
+
+
+            if (!trip) {
+
+                showToast(
+                    "Trip could not be found."
+                );
+
+                return;
+
+            }
+
+
+            renderEverything(trip);
+
+            openTripDetails();
+
+        }
+
+
+        /* =====================================================
+           TRIP DETAILS
+        ===================================================== */
+
+        function openTripDetails() {
+
+            const trip =
+                getActiveTrip();
+
+
+            if (!trip) {
+
+                showToast(
+                    "Create a trip first."
+                );
+
+                return;
+
+            }
+
+
+            renderTripDetails(trip);
+
+
+            document
+                .getElementById("tripModal")
+                .classList.add("active");
+
+        }
+
+
+        function closeTripDetails() {
+
+            document
+                .getElementById("tripModal")
+                .classList.remove("active");
+
+        }
+
+
+        /* =====================================================
+           RENDER TRIP DETAILS
+        ===================================================== */
+
+        function renderTripDetails(trip) {
+
+            document
+                .getElementById("detailTitle")
+                .textContent =
+                trip.name;
+
+
+            document
+                .getElementById("detailSubtitle")
+                .textContent =
+                `${formatDate(trip.startDate)} - ${formatDate(trip.endDate)} • ${trip.startLocation} → ${trip.destination} • ${trip.members} members`;
+
+
+            document
+                .getElementById("overviewText")
+                .textContent =
+                `Your ${trip.destination} trip is currently ${trip.progress}% planned.`;
+
+
+            document
+                .getElementById("detailProgressBar")
+                .style.width =
+                trip.progress + "%";
+
+
+            renderItinerary(trip);
+
+            renderTransport(trip);
+
+            renderHotel(trip);
+
+            renderMembers(trip);
+
+            restorePacking(trip);
+
+            renderCheckButtons(trip);
+
+        }
+
+
+        /* =====================================================
+           ITINERARY
+        ===================================================== */
+
+        function renderItinerary(trip) {
+
+            const list =
+                document.getElementById("itineraryList");
+
+
+            list.innerHTML = "";
+
+
+            trip.itinerary.forEach(
+                function (activity, index) {
+
+                    const item =
+                        document.createElement("div");
+
+                    item.className =
+                        "itinerary-item";
+
+
+                    item.innerHTML = `
+
+                <div class="itinerary-time">
+                    ${escapeHTML(activity.time)}
+                </div>
+
+                <div>
+
+                    <h4>
+                        Day ${index + 1}:
+                        ${escapeHTML(activity.title)}
+                    </h4>
+
+                    <p>
+                        📍 ${escapeHTML(activity.location)}
+                    </p>
+
+                </div>
+
+            `;
+
+
+                    list.appendChild(item);
+
+                }
+            );
+
+        }
+
+
+        /* =====================================================
+           ADD ACTIVITY
+        ===================================================== */
+
+        function addActivity() {
+
+            const trip =
+                getActiveTrip();
+
+
+            if (!trip) {
+
+                return;
+
+            }
+
+
+            const title =
+                prompt(
+                    "Enter activity name:"
+                );
+
+
+            if (!title) {
+
+                return;
+
+            }
+
+
+            const time =
+                prompt(
+                    "Enter time (example: 14:00):"
+                ) || "14:00";
+
+
+            const location =
+                prompt(
+                    "Enter location:"
+                ) || trip.destination;
+
+
+            trip.itinerary.push({
+
+                id: Date.now(),
+
+                time: time,
+
+                title: title,
+
+                location: location
+
+            });
+
+
+            trip.checks.itinerary =
+                false;
+
+
+            recalculateProgress(trip);
+
+            saveTrip(trip);
+
+            renderTripDetails(trip);
+
+            renderEverything(trip);
+
+
+            showToast(
+                "Activity added successfully."
+            );
+
+        }
+
+
+        /* =====================================================
+           TRANSPORT
+        ===================================================== */
+
+        function renderTransport(trip) {
+
+            const info =
+                destinationData[trip.destination];
+
+
+            document
+                .getElementById("transportTitle")
+                .textContent =
+                "🚆 " +
+                trip.startLocation +
+                " → " +
+                trip.destination;
+
+
+            document
+                .getElementById("transportText")
+                .textContent =
+                info
+                    ? info.transport
+                    : "Choose train, bus, car or flight based on your route.";
+
+
+            document
+                .getElementById("localTransportText")
+                .textContent =
+                info
+                    ? info.local
+                    : "Local transport options available at destination.";
+
+        }
+
+
+        /* =====================================================
+           HOTEL
+        ===================================================== */
+
+        function renderHotel(trip) {
+
+            const info =
+                destinationData[trip.destination];
+
+
+            document
+                .getElementById("hotelTitle")
+                .textContent =
+                "🏨 Stay in " +
+                trip.destination;
+
+
+            document
+                .getElementById("hotelText")
+                .textContent =
+                info
+                    ? `${info.hotel}. Check-in: ${formatDate(trip.startDate)} • Check-out: ${formatDate(trip.endDate)}.`
+                    : `Find a suitable hotel or homestay in ${trip.destination}.`;
+
+        }
+
+
+        /* =====================================================
+           MEMBERS
+        ===================================================== */
+
+        function renderMembers(trip) {
+
+            const list =
+                document.getElementById("membersList");
+
+
+            list.innerHTML = "";
+
+
+            for (
+                let i = 1;
+                i <= trip.members;
+                i++
+            ) {
+
+                const item =
+                    document.createElement("div");
+
+                item.className =
+                    "check-item";
+
+
+                item.innerHTML = `
+
+            <span>
+                👤 Member ${i}
+            </span>
+
+            <strong style="margin-left:auto">
+                ${i === 1 ? "Admin" : "Member"}
+            </strong>
+
+        `;
+
+
+                list.appendChild(item);
+
+            }
+
+        }
+
+
+        /* =====================================================
+           CHECK-IN
+        ===================================================== */
+
+        function checkIn(task, button) {
+
+            const trip =
+                getActiveTrip();
+
+
+            if (!trip) {
+
+                return;
+
+            }
+
+
+            trip.checks =
+                trip.checks || {};
+
+
+            trip.checks[task] =
+                !trip.checks[task];
+
+
+            recalculateProgress(trip);
+
+            saveTrip(trip);
+
+            renderEverything(trip);
+
+            renderTripDetails(trip);
+
+
+            showToast(
+                trip.checks[task]
+                    ? `${task} completed! +18%`
+                    : `${task} check-in removed.`
+            );
+
+        }
+
+
+        /* =====================================================
+           PROGRESS
+        ===================================================== */
+
+        function recalculateProgress(trip) {
+
+            const checks =
+                trip.checks || {};
+
+
+            const completed =
+                Object.values(checks)
+                    .filter(Boolean)
+                    .length;
+
+
+            trip.progress =
+                Math.min(
+                    100,
+                    10 + completed * 18
+                );
+
+        }
+
+
+        /* =====================================================
+           CHECK BUTTONS
+        ===================================================== */
+
+        function renderCheckButtons(trip) {
+
+            const buttons =
+                document.querySelectorAll(
+                    ".check-btn"
+                );
+
+
+            const icons = {
+
+                transport: "🚆",
+
+                hotel: "🏨",
+
+                itinerary: "📅",
+
+                packing: "🎒",
+
+                members: "👥"
+
+            };
+
+
+            buttons.forEach(
+                function (button) {
+
+                    const task =
+                        button.dataset.task;
+
+
+                    if (trip.checks[task]) {
+
+                        button.classList.add("done");
+
+                        button.textContent =
+                            "✓ " +
+                            icons[task] +
+                            " " +
+                            capitalize(task);
+
+                    } else {
+
+                        button.classList.remove("done");
+
+                        button.textContent =
+                            icons[task] +
+                            " " +
+                            capitalize(task);
+
+                    }
+
+                }
+            );
+
+        }
+
+
+        /* =====================================================
+           PACKING
+        ===================================================== */
+
+        function updatePacking() {
+
+            const trip =
+                getActiveTrip();
+
+
+            if (!trip) {
+
+                return;
+
+            }
+
+
+            const items =
+                document.querySelectorAll(
+                    '#packing input[type="checkbox"]'
+                );
+
+
+            let count = 0;
+
+            trip.packingItems = [];
+
+
+            items.forEach(
+                function (item, index) {
+
+                    const span =
+                        item.parentElement
+                            .querySelector("span");
+
+
+                    if (item.checked) {
+
+                        count++;
+
+                        span.classList.add("checked");
+
+                        trip.packingItems.push(index);
+
+                    } else {
+
+                        span.classList.remove("checked");
+
+                    }
+
+                }
+            );
+
+
+            document
+                .getElementById("packingStatus")
+                .textContent =
+                count === items.length
+                    ? "All items packed! 🎉"
+                    : count + " items packed";
+
+
+            if (count === items.length) {
+
+                trip.checks.packing = true;
+
+            } else {
+
+                trip.checks.packing = false;
+
+            }
+
+
+            recalculateProgress(trip);
+
+            saveTrip(trip);
+
+            renderEverything(trip);
+
+            renderCheckButtons(trip);
+
+        }
+
+
+        /* =====================================================
+           RESTORE PACKING
+        ===================================================== */
+
+        function restorePacking(trip) {
+
+            const items =
+                document.querySelectorAll(
+                    '#packing input[type="checkbox"]'
+                );
+
+
+            const saved =
+                trip.packingItems || [];
+
+
+            let count = 0;
+
+
+            items.forEach(
+                function (item, index) {
+
+                    item.checked =
+                        saved.includes(index);
+
+
+                    const span =
+                        item.parentElement
+                            .querySelector("span");
+
+
+                    if (item.checked) {
+
+                        count++;
+
+                        span.classList.add("checked");
+
+                    } else {
+
+                        span.classList.remove("checked");
+
+                    }
+
+                }
+            );
+
+
+            document
+                .getElementById("packingStatus")
+                .textContent =
+                count === items.length
+                    ? "All items packed! 🎉"
+                    : count + " items packed";
+
+        }
+
+
+        /* =====================================================
+           DELETE TRIP
+        ===================================================== */
+
+        function deleteTrip() {
+
+            const trip =
+                getActiveTrip();
+
+
+            if (!trip) {
+
+                return;
+
+            }
+
+
+            const confirmDelete =
+                confirm(
+                    `Delete "${trip.name}"? This cannot be undone.`
+                );
+
+
+            if (!confirmDelete) {
+
+                return;
+
+            }
+
+
+            const trips =
+                getTrips().filter(
+                    item =>
+                        item.id !== trip.id
+                );
+
+
+            saveTrips(trips);
+
+
+            localStorage.removeItem(
+                ACTIVE_KEY
+            );
+
+
+            closeTripDetails();
+
+
+            renderTripList();
+
+
+            resetPreview();
+
+
+            showToast(
+                "Trip deleted successfully."
+            );
+
+        }
+
+
+        /* =====================================================
+           RESET PREVIEW
+        ===================================================== */
+
+        function resetPreview() {
+
+            document
+                .getElementById("previewTripName")
+                .textContent =
+                "Create your first trip";
+
+
+            document
+                .getElementById("previewStart")
+                .textContent =
+                "--";
+
+
+            document
+                .getElementById("previewEnd")
+                .textContent =
+                "--";
+
+
+            document
+                .getElementById("previewDestination")
+                .textContent =
+                "Starting location → Destination";
+
+
+            document
+                .getElementById("previewProgress")
+                .textContent =
+                "0%";
+
+
+            document
+                .getElementById("progressBar")
+                .style.width =
+                "0%";
+
+
+            document
+                .getElementById("previewStatus")
+                .textContent =
+                "Planning";
+
+
+            document
+                .getElementById("previewMembers")
+                .innerHTML =
+                "<span>👥</span>";
+
+
+            document
+                .getElementById("todayDestination")
+                .textContent =
+                "TRIP";
+
+
+            document
+                .getElementById("todayList")
+                .innerHTML = `
+
+        <div class="today-item">
+
+            <div class="time">
+                --:--
+            </div>
+
+            <div>
+
+                <strong>
+                    No trip selected
+                </strong>
+
+                <p>
+                    Create a trip to see your plan.
+                </p>
+
+            </div>
+
+        </div>
+
+    `;
+
+        }
+
+
+        /* =====================================================
+           TODAY'S PLAN
+        ===================================================== */
+
+        function renderTodayPlan(trip) {
+
+            if (!trip) {
+
+                resetPreview();
+
+                return;
+
+            }
+
+
+            document
+                .getElementById("todayDestination")
+                .textContent =
+                trip.destination
+                    .toUpperCase();
+
+
+            const list =
+                document.getElementById("todayList");
+
+
+            list.innerHTML = "";
+
+
+            trip.itinerary
+                .slice(0, 3)
+                .forEach(
+                    function (item) {
+
+                        const div =
+                            document.createElement("div");
+
+                        div.className =
+                            "today-item";
+
+
+                        div.innerHTML = `
+
+                <div class="time">
+                    ${escapeHTML(item.time)}
+                </div>
+
+                <div>
+
+                    <strong>
+                        ${escapeHTML(item.title)}
+                    </strong>
+
+                    <p>
+                        ${escapeHTML(item.location)}
+                    </p>
+
+                </div>
+
+            `;
+
+
+                        list.appendChild(div);
+
+                    }
+                );
+
+        }
+
+
+        /* =====================================================
+           SEARCH
+        ===================================================== */
+
+        function searchDestinations() {
+
+            const value =
+                document
+                    .getElementById("destinationSearch")
+                    .value
+                    .toLowerCase()
+                    .trim();
+
+
+            document
+                .querySelectorAll(".destination")
+                .forEach(
+                    function (card) {
+
+                        const name =
+                            card.dataset.name
+                                .toLowerCase();
+
+
+                        card.style.display =
+                            (
+                                value === "" ||
+                                name.includes(value)
+                            )
+                                ? ""
+                                : "none";
+
+                    }
+                );
+
+        }
+
+
+        function useCurrentSearch() {
+
+            const value =
+                document
+                    .getElementById("destinationSearch")
+                    .value
+                    .trim();
+
+
+            if (!value) {
+
+                showToast(
+                    "Type a destination first."
+                );
+
+                return;
+
+            }
+
+
+            searchDestinations();
+
+
+            const visible =
+                [
+                    ...document
+                        .querySelectorAll(".destination")
+                ]
+                    .filter(
+                        card =>
+                            card.style.display !== "none"
+                    );
+
+
+            document
+                .getElementById("explore")
+                .scrollIntoView({
+                    behavior: "smooth"
+                });
+
+
+            if (visible.length) {
+
+                showToast(
+                    "Destination found. Select the card."
+                );
+
+            } else {
+
+                showToast(
+                    "No destination found."
+                );
+
+            }
+
+        }
+
+
+        function showAllDestinations() {
+
+            document
+                .getElementById("destinationSearch")
+                .value = "";
+
+
+            document
+                .querySelectorAll(".destination")
+                .forEach(
+                    card =>
+                        card.style.display = ""
+                );
+
+
+            showToast(
+                "All destinations displayed."
+            );
+
+        }
+
+
+        /* =====================================================
+           SELECT DESTINATION
+        ===================================================== */
+
+        function selectDestination(name) {
+
+            document
+                .getElementById("tripDestination")
+                .value =
+                name;
+
+
+            openCreateTrip();
+
+
+            showToast(
+                `${name} selected. Now choose your starting location.`
+            );
+
+        }
+
+
+        /* =====================================================
+           TABS
+        ===================================================== */
+
+        function switchTab(event, id) {
+
+            document
+                .querySelectorAll(".trip-tab")
+                .forEach(
+                    button =>
+                        button.classList.remove("active")
+                );
+
+
+            document
+                .querySelectorAll(".tab-content")
+                .forEach(
+                    tab =>
+                        tab.classList.remove("active")
+                );
+
+
+            event.currentTarget
+                .classList.add("active");
+
+
+            document
+                .getElementById(id)
+                .classList.add("active");
+
+        }
+
+
+        /* =====================================================
+           MODAL CLICK
+        ===================================================== */
+
+        document
+            .getElementById("createModal")
+            .addEventListener(
+                "click",
+                function (e) {
+
+                    if (e.target === this) {
+
+                        closeCreateTrip();
+
+                    }
+
+                }
+            );
+
+
+        document
+            .getElementById("tripModal")
+            .addEventListener(
+                "click",
+                function (e) {
+
+                    if (e.target === this) {
+
+                        closeTripDetails();
+
+                    }
+
+                }
+            );
+
+
+        /* =====================================================
+           ESCAPE
+        ===================================================== */
+
+        document
+            .addEventListener(
+                "keydown",
+                function (e) {
+
+                    if (e.key === "Escape") {
+
+                        closeCreateTrip();
+
+                        closeTripDetails();
+
+                    }
+
+                }
+            );
+
+
+        /* =====================================================
+           HELPERS
+        ===================================================== */
+
+        function formatDate(value) {
+
+            if (!value) {
+
+                return "--";
+
+            }
+
+
+            return new Date(
+                value + "T00:00:00"
+            )
+                .toLocaleDateString(
+                    "en-IN",
+                    {
+                        day: "2-digit",
+                        month: "short",
+                        year: "numeric"
+                    }
+                );
+
+        }
+
+
+        function formatDateShort(value) {
+
+            if (!value) {
+
+                return "--";
+
+            }
+
+
+            return new Date(
+                value + "T00:00:00"
+            )
+                .toLocaleDateString(
+                    "en-IN",
+                    {
+                        day: "2-digit",
+                        month: "short"
+                    }
+                );
+
+        }
+
+
+        function capitalize(value) {
+
+            return value
+                .charAt(0)
+                .toUpperCase() +
+                value.slice(1);
+
+        }
+
+
+        function escapeHTML(value) {
+
+            return String(value)
+                .replace(
+                    /[&<>"']/g,
+                    function (match) {
+
+                        const chars = {
+
+                            "&": "&amp;",
+
+                            "<": "&lt;",
+
+                            ">": "&gt;",
+
+                            '"': "&quot;",
+
+                            "'": "&#039;"
+
+                        };
+
+                        return chars[match];
+
+                    }
+                );
+
+        }
+
+
+        /* =====================================================
+           PAGE LOAD
+        ===================================================== */
+
+        window.addEventListener(
+            "load",
+            function () {
+
+                const trips =
+                    getTrips();
+
+
+                const active =
+                    getActiveTrip();
+
+
+                renderTripList();
+
+
+                if (active) {
+
+                    renderEverything(active);
+
+                } else if (trips.length) {
+
+                    localStorage.setItem(
+                        ACTIVE_KEY,
+                        trips[trips.length - 1].id
+                    );
+
+
+                    renderEverything(
+                        trips[trips.length - 1]
+                    );
+
+                } else {
+
+                    resetPreview();
+
+                }
+
+            }
+        );
+
+    </script>
+    <script src="script.js"></script>
+
+</body>
+
+</html>
